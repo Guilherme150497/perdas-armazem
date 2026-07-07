@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perdas · Armazém</title>
+<style>
+  :root{
+    --ink:#0B0F14;
+    --amber:#F5A623;
+    --paper:#F3EFE6;
+    --steel:#8891A0;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .stage{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:64px 24px;
+  }
+
+  .bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+
+  .content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:100%;
+    max-width:640px;
+  }
+
+  .eyebrow{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin-bottom:18px;
+  }
+
+  h1{
+    margin:0;
+    font-family:"Arial Black","Helvetica Neue",Arial,sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    font-size:clamp(30px,5.4vw,52px);
+    line-height:1.02;
+    color:var(--paper);
+  }
+
+  .links{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    max-width:480px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  a.item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:inherit;
+    padding:30px 16px;
+    border-radius:16px;
+    border:1px solid rgba(243,239,230,0.14);
+    background:rgba(11,15,20,0.35);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    transition:transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+  a.item:hover, a.item:focus-visible{
+    transform:translateY(-4px);
+    border-color:var(--amber);
+    background:rgba(11,15,20,0.55);
+  }
+  a.item:focus-visible{outline:2px solid var(--amber); outline-offset:3px;}
+
+  .icon{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:1.5px solid var(--amber);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--amber);
+  }
+  .icon svg{width:22px;height:22px;}
+
+  .item span{
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    color:var(--paper);
+    line-height:1.35;
+  }
+
+  @media (max-width:520px){
+    .links{grid-template-columns:1fr; max-width:280px;}
+    a.item{flex-direction:row; justify-content:flex-start; padding:16px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <svg class="bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0B0F14"/>
+        <stop offset="55%" stop-color="#10161C"/>
+        <stop offset="100%" stop-color="#0B0F14"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="50%" cy="60%" r="55%">
+        <stop offset="0%" stop-color="#F5A623" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0B0F14" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#0B0F14" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#sky)"/>
+    <rect width="1200" height="800" fill="url(#glow)"/>
+
+    <!-- warehouse floor line -->
+    <path d="M0 620 L1200 620" stroke="#1A222B" stroke-width="2"/>
+
+    <!-- racking / shelving silhouette, low opacity -->
+    <g opacity="0.5">
+      <!-- shelf uprights -->
+      <rect x="220" y="330" width="10" height="290" fill="#151C24"/>
+      <rect x="480" y="330" width="10" height="290" fill="#151C24"/>
+      <rect x="740" y="330" width="10" height="290" fill="#151C24"/>
+      <rect x="970" y="330" width="10" height="290" fill="#151C24"/>
+      <!-- shelf beams -->
+      <rect x="220" y="360" width="530" height="8" fill="#1A222B"/>
+      <rect x="220" y="470" width="530" height="8" fill="#1A222B"/>
+      <rect x="740" y="360" width="240" height="8" fill="#1A222B"/>
+      <rect x="740" y="470" width="240" height="8" fill="#1A222B"/>
+
+      <!-- pallet boxes -->
+      <rect x="250" y="380" width="70" height="80" rx="3" fill="#161D26"/>
+      <rect x="335" y="390" width="70" height="70" rx="3" fill="#161D26"/>
+      <rect x="420" y="378" width="70" height="82" rx="3" fill="#161D26"/>
+      <rect x="255" y="490" width="70" height="70" rx="3" fill="#161D26"/>
+      <rect x="340" y="495" width="70" height="65" rx="3" fill="#161D26"/>
+
+      <rect x="765" y="385" width="66" height="75" rx="3" fill="#161D26"/>
+      <rect x="845" y="392" width="66" height="68" rx="3" fill="#161D26"/>
+      <rect x="770" y="495" width="66" height="65" rx="3" fill="#161D26"/>
+    </g>
+
+    <!-- one broken/fallen crate near the center, subtle amber accent -->
+    <g transform="translate(560,560)" opacity="0.85">
+      <rect x="0" y="10" width="64" height="46" rx="3" fill="#161D26" transform="rotate(-8 32 33)"/>
+      <path d="M6 12 L58 4" stroke="#F5A623" stroke-width="2" opacity="0.55" transform="rotate(-8 32 33)"/>
+      <circle cx="88" cy="40" r="4" fill="#F5A623" opacity="0.35"/>
+      <circle cx="102" cy="52" r="3" fill="#F5A623" opacity="0.25"/>
+    </g>
+
+    <rect width="1200" height="800" fill="url(#fade)"/>
+  </svg>
+
+  <div class="content">
+    <div class="eyebrow">Armazém · Revenda</div>
+    <h1>Perdas &amp; Prejuízo</h1>
+
+    <div class="links">
+      <a class="item" href="https://guilherme150497.github.io/dashboard-prejuizo/" target="_blank" rel="noopener">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+        </span>
+        <span>Pacote de<br>Prejuízo</span>
+      </a>
+
+      <a class="item" href="https://benevolent-seahorse-f329ec.netlify.app/" target="_blank" rel="noopener">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12l8.73-5.04"/><path d="M12 22.08V12"/></svg>
+        </span>
+        <span>Estratificação<br>das Perdas</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
